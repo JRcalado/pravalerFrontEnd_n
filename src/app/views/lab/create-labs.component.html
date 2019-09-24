@@ -1,0 +1,141 @@
+<div class="animated fadeIn" >
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>LAB </strong>
+            <small>CREATE</small>
+          </div>
+          <div class="card-body">
+            <div class="row">
+                <div class="row">
+                    <div class="col-sm-3">
+
+                    </div>
+                  </div><!--/.row-->
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter  name" [(ngModel)]="name" >
+                </div>
+                <div class="form-group">
+                  <label for="name">CNPJ</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter CNPJ" [(ngModel)]="formLabTitle" >
+                </div>
+              </div>
+            </div><!--/.row-->
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="name" > Status</label>
+                  <br/>
+                  <label class="switch switch-3d switch-primary">
+                      <input type="checkbox" class="switch-input"  [(ngModel)]="status"  >
+                     <span class="switch-slider"></span>
+               </label>
+              </div>
+              </div>
+            </div><!--/.row-->
+
+
+          </div>
+          <div class="card-footer">
+              <button type="submit" (click)="openModal(template,createLabor)"    class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Create</button>
+
+            </div>
+        </div>
+
+      </div><!--/.col-->
+
+    </div><!--/.row-->
+
+
+
+
+
+  </div>
+
+
+
+
+
+  <ng-template #template>
+
+
+
+    <div class="modal-header ">
+       <h4> Atenção!!!</h4>
+
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p> Tem certeza que deseja salvar essas alterações?</p>
+        <button  style="margin: 5px;" type="button"  (click)="modalRef.hide()" class="btn btn-primary" popover="Vivamus sagittis">
+           <i class="fa fa-reply" aria-hidden="true"></i>
+            Voltar
+        </button>
+        <button style="margin: 5px;" type="button" (click)="editLab()"  class="btn btn-warning" tooltip="Vivamus sagittis">
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+          Salvar Alterações
+        </button>
+    </div>
+
+
+        </ng-template>
+
+
+        <ng-template #teste>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Modal</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Just a modal with a bunch of words inside, nothing serious.
+            </div>
+          </ng-template>
+
+
+
+
+
+          <div bsModal #childModal="bs-modal" [config]="{backdrop: 'static'}"  class="modal fade" tabindex="-1"
+               role="dialog" aria-labelledby="dialog-child-name">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+              <!--<div class="modal-header">
+
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>-->
+                <div class="modal-body">
+                  <img  style="margin-left:40%;" width='60px' src='assets/img/lg.circle-slack-loading-icon.gif'>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div bsModal #erro="bs-modal"   class="modal fade"
+          role="dialog" aria-labelledby="dialog-child-name">
+          <div class="modal-dialog modal-sm">
+           <div class="modal-content">
+
+             <div class="modal-body">
+                 <p class="text-danger">
+                 <i class="cui-thumb-down icons font-2xl d-block mt-4">  ERRO!!!</i>
+                 </p>
+                 <br>
+
+                 <p class="text-danger">  O servidor não conseguiu realizar esta operação, tente mais tarde ou entre em contato com o administrador do sistema.</p>
+             </div>
+             <button  style="margin: 5px;" type="button"  (click)="erroHideChildModal()" class="btn btn-primary" popover="Vivamus sagittis">
+               <i class="fa fa-reply" aria-hidden="true"></i>
+                Voltar
+            </button>
+           </div>
+         </div>
+     </div>

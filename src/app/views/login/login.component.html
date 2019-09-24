@@ -1,0 +1,47 @@
+<div class="app-body" style="background-image: url(assets/img/fundo.png);background-repeat: no-repeat;
+background-size: cover;
+-webkit-background-size: cover;
+ -moz-background-size: cover;
+-o-background-size: cover;
+position: relative;z-index: 15;">
+
+
+  <div class="container" style="margin-top:100px ;" >
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card card-signin my-5">
+            <div class="card-body  bg-secondary"  >
+               <div   class="card-title text-center">
+                  <img width="200px" src="assets/img/logo_pravaler.png"></div>
+                  <hr class="my-4">
+              <form class="form-signin" (ngSubmit)="login()">
+
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="background-color:#e35d29" ><i style="color:#fff"class="icon-user"></i></span>
+                      </div>
+                  <input  type="email" id="inputEmail"  name="email" class="form-control" placeholder="Email address" required autofocus [(ngModel)]="user.email">
+
+                </div>
+                  <br/>
+                <div class="input-group  ">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text " style="background-color:#e35d29"><i style="color:#fff" class="icon-lock"></i></span>
+                      </div>
+                  <input  type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required  [(ngModel)]="user.password">
+
+                </div>
+
+                <br/>
+                <button class="btn btn-lg  btn-block text-uppercase " style="color: #fff;
+                background-color: #e35d29;
+                border-color: #e35d29;" type="submit"><b>Sign in</b></button>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

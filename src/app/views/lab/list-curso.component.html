@@ -1,0 +1,128 @@
+<div class="animated fadeIn">
+
+  <div class="row" >
+
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Curso
+                  <button  style="margin: 5px;" type="button" [routerLink]="['/lab/CreateCurso']" [queryParams]="{ id:id_lab }"   class="btn  btn-primary btn-sm float-right "><i class="fa fa-lightbulb-o"></i> Cadastrar</button>
+
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date registered</th>
+                <!--  <th>Role</th>-->
+                <th>Duracao</th>
+                <th>Status</th>
+                <th>instituição ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr  *ngFor="let l of labs">
+                  <td>{{l.name}}</td>
+                  <td>{{l.created_at}}</td>
+                  <td>{{l.duracao}}</td>
+                  <td>{{l.instituicao_id}}</td>
+                  <td>{{l.status}}</td>
+
+
+              <td >
+                  <button  style="margin: 5px;" type="button" class="btn  btn-warning btn-sm float-right" (click)="redirLab(l.id)"   ><i class="fa fa-edit"> </i> Editar</button>
+                  <button style="margin: 5px;"  type="button" class="btn  btn-danger btn-sm float-right" (click)="openModal(template,deleteLab,l.id)" ><i class="fa fa-trash"> </i> Deletar</button>
+                  <button style="margin: 5px;"  type="button" class="btn  btn-primary btn-sm float-right" (click)="redirAluno(l.id)" > Alunos</button>
+            </td>
+
+              </tr>
+            </tbody>
+          </table>
+          <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>
+
+
+<ng-template #template>
+
+
+
+  <div class="modal-header ">
+     <h4> Atenção!!!</h4>
+
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p> Tem certeza que deseja deletar?</p>
+      <button  style="margin: 5px;" type="button"  (click)="modalRef.hide()" class="btn btn-primary" popover="Vivamus sagittis">
+         <i class="fa fa-reply" aria-hidden="true"></i>
+          Voltar
+      </button>
+      <button style="margin: 5px;" type="button" (click)="repassaModalFuncao()"  class="btn btn-warning" tooltip="Vivamus sagittis">
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        Deletar
+      </button>
+  </div>
+
+
+      </ng-template>
+      <div bsModal #childModal="bs-modal" [config]="{backdrop: 'static'}"  class="modal fade" tabindex="-1"
+      role="dialog" aria-labelledby="dialog-child-name">
+   <div class="modal-dialog modal-sm">
+     <div class="modal-content">
+     <!--<div class="modal-header">
+
+         <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>-->
+       <div class="modal-body">
+         <img  style="margin-left:40%;" width='60px' src='assets/img/lg.circle-slack-loading-icon.gif'>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+ <div bsModal #erro="bs-modal"   class="modal fade"
+ role="dialog" aria-labelledby="dialog-child-name">
+ <div class="modal-dialog modal-sm">
+  <div class="modal-content">
+
+    <div class="modal-body">
+        <p class="text-danger">
+        <i class="cui-thumb-down icons font-2xl d-block mt-4">  ERRO!!!</i>
+        </p>
+        <br>
+
+        <p class="text-danger">  O servidor não conseguiu realizar esta operação, tente mais tarde ou entre em contato com o administrador do sistema.</p>
+    </div>
+    <button  style="margin: 5px;" type="button"  (click)="erroHideChildModal()" class="btn btn-primary" popover="Vivamus sagittis">
+      <i class="fa fa-reply" aria-hidden="true"></i>
+       Voltar
+   </button>
+  </div>
+</div>
+</div>
